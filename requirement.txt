@@ -19,7 +19,6 @@ cv2-tools==2.3.4
 cv2imageload==1.0.2
 cv2wrap==1.0
 cycler==0.10.0
-Cython==0.29.14
 decorator==4.4.1
 defusedxml==0.6.0
 docopt==0.6.2
@@ -96,8 +95,6 @@ protobuf==3.11.2
 psutil==5.6.7
 pyasn1==0.4.8
 pyasn1-modules==0.2.7
-pycoco==0.7.2
-pycocotools==2.0
 Pygments==2.4.2
 pyparsing==2.4.5
 pyrsistent==0.15.5
