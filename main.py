@@ -1,6 +1,6 @@
 import numpy as np
 from keras.preprocessing.text import Tokenizer
-from keras.layers import Input, Conv2D,LeakyReLU, Flatten, K,Dense,Reshape,Activation,Conv2DTranspose,Embedding,Dropout,LSTM
+from keras.layers import Input, Conv2D,LeakyReLU, Flatten, Dense,Reshape,Activation,Conv2DTranspose,Embedding,Dropout,LSTM
 from keras.models import Model
 from keras.optimizers import RMSprop
 from keras.utils import np_utils
