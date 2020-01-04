@@ -19,6 +19,7 @@ from keras.models import load_model
 from keras.optimizers import RMSprop
 from keras.utils import np_utils
 import re
+import argparse
 # *********************************************************************************************************************
 
 
@@ -163,3 +164,43 @@ def test_model(args):
         print("output from loaded model : (",seedtext,") => ", newtext)
     except:
         print("could not find "+fileandpath)
+
+def get_args():
+  """Argument parser.
+
+  Returns:
+    Dictionary of arguments.
+  """
+  parser = argparse.ArgumentParser()
+  parser.add_argument(
+      '--job-dir',
+      type=str,
+      required=True,
+      help='local or GCS location for writing checkpoints and exporting models')
+  parser.add_argument(
+      '--num-epochs',
+      type=int,
+      default=20,
+      help='number of times to go through the data, default=20')
+  parser.add_argument(
+      '--batch-size',
+      default=128,
+      type=int,
+      help='number of records to read during each training step, default=128')
+  parser.add_argument(
+      '--learning-rate',
+      default=.01,
+      type=float,
+      help='learning rate for gradient descent, default=.01')
+  parser.add_argument(
+      '--verbosity',
+      choices=['DEBUG', 'ERROR', 'FATAL', 'INFO', 'WARN'],
+      default='INFO')
+  args, _ = parser.parse_known_args()
+  return args
+
+# main function
+if __name__ == '__main__':
+  args = get_args()
+  #tf.logging.set_verbosity(args.verbosity)
+  train_and_evaluate(args)
