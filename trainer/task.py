@@ -26,11 +26,11 @@ import argparse
 # *********************************************************************************************************************
 # Load data from file
 def load_data(datapath):
-    filename=datapath+"/hblang.txt"
+    filename=datapath+"/hbshort.txt"
     with open(filename,encoding="utf-8-sig") as f:
         text =f.read()
 
-    seq_length=3 # sequence around sentence
+    seq_length=10 # sequence around sentence
     step=1 # prediction step forward
 
     start_story='| '*seq_length
@@ -125,6 +125,8 @@ def train_and_evaluate(args):
     x=Dropout(0.2)(x)
     x=LSTM(n_units)(x)
     x=Dropout(0.2)(x)
+    #x=LSTM(n_units)(x)
+    #x=Dropout(0.2)(x)
     text_out=Dense(total_words,activation='softmax')(x)
 
     model=Model(text_in,text_out)
