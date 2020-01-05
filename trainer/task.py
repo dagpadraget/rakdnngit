@@ -26,7 +26,7 @@ import argparse
 # *********************************************************************************************************************
 # Load data from file
 def load_data(datapath):
-    filename=datapath+"\\hbshort.txt"
+    filename=datapath+"/hbshort.txt"
     with open(filename,encoding="utf-8-sig") as f:
         text =f.read()
 
@@ -148,10 +148,10 @@ def train_and_evaluate(args):
     except:
         print ("folder "+export_path+" already existed")
 
-    model.save(export_path+"\\allincluded.model")
+    model.save(export_path+"/allincluded.model")
 
 def test_model(args):
-    fileandpath = os.path.join(args.job_dir, 'rak_dnngit')+"\\allincluded.model"
+    fileandpath = os.path.join(args.job_dir, 'rak_dnngit')+"/allincluded.model"
 
     try:
         model=load_model(fileandpath)

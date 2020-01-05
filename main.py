@@ -1,7 +1,8 @@
 import trainer.task as task
 
 # directory for temporary data
-tmpdirname='c:\\tmp\\rakdnngit'
+tmpdirname='/content/tmp/rakdnngit'
+#tmpdirname='c:/tmp/rakdnngit'
 
 xbatch_size=32
 xlearning_rate=0.01
@@ -13,7 +14,7 @@ class Argar:
     batch_size=xbatch_size
     learning_rate=xlearning_rate
     num_epochs=xnum_epochs
-    job_dir=tmpdirname+"\\jobdir"
+    job_dir=tmpdirname+"/jobdir"
 
 argen=Argar()
 
