@@ -26,7 +26,7 @@ import argparse
 # *********************************************************************************************************************
 # Load data from file
 def load_data(datapath):
-    filename=datapath+"/hblang.txt"
+    filename=datapath+"/hbmellan.txt"
     with open(filename,encoding="utf-8-sig") as f:
         text =f.read()
 
