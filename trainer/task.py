@@ -30,7 +30,7 @@ def load_data(datapath):
     with open(filename,encoding="utf-8-sig") as f:
         text =f.read()
 
-    seq_length=3 # sequence around sentence
+    seq_length=4 # sequence around sentence
     step=1 # prediction step forward
 
     start_story='| '*seq_length
