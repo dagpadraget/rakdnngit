@@ -74,7 +74,7 @@ def generate_text2(seed_text,next_words,model,max_sequence_len,temp,start_story,
     probs = model.predict(token_list.reshape(1,len(token_list)), verbose=0)[0]
     y_class = sample_with_temp(probs, temperature=temp)
     output_word = tokenizer.index_word[y_class] if y_class > 0 else ''
-    return output_word
+    return seed_text+"=>"+output_word
 
 # *********************************************************************************************************************
 def generate_text(seed_text,next_words,model,max_sequence_len,temp,start_story,tokenizer):
@@ -160,10 +160,15 @@ def test_model(args):
         model.summary()
 
         token_list, seq_length, step, total_words,start_story,tokenizer = load_data("localdata")
-        seedtext="till handelsman och"
-        newtext=generate_text2(seedtext,1,model,10,0.01,start_story,tokenizer)
 
-        print("output from loaded model : (",seedtext,") => ", newtext)
+        print("output from loaded model : *************************")
+
+        print(generate_text2("till handelsman och ha", 1, model, 10, 0.01, start_story,tokenizer))
+        print(generate_text2("gråsalva åt grisen och", 1, model, 10, 0.01, start_story, tokenizer))
+        print(generate_text2("hade de hamnat på", 1, model, 10, 0.01, start_story, tokenizer))
+        print(generate_text2("därför skrek han att", 1, model, 10, 0.01, start_story, tokenizer))
+
+
     except:
         print("could not find "+fileandpath)
 
