@@ -22,15 +22,15 @@ import re
 import argparse
 # *********************************************************************************************************************
 
-
+ext_seq_len=5
 # *********************************************************************************************************************
 # Load data from file
 def load_data(datapath):
-    filename=datapath+"/hbshort.txt"
+    filename=datapath+"/hblang.txt"
     with open(filename,encoding="utf-8-sig") as f:
         text =f.read()
 
-    seq_length=10 # sequence around sentence
+    seq_length=ext_seq_len # sequence around sentence
     step=1 # prediction step forward
 
     start_story='| '*seq_length
@@ -71,6 +71,7 @@ def generate_sequences(token_list,step,seq_length,total_words):
 
 def generate_text2(seed_text,next_words,model,max_sequence_len,temp,start_story,tokenizer):
     token_list = np.array(tokenizer.texts_to_sequences([seed_text])[0])
+    token_list=token_list[-ext_seq_len:]
     probs = model.predict(token_list.reshape(1,len(token_list)), verbose=0)[0]
     y_class = sample_with_temp(probs, temperature=temp)
     output_word = tokenizer.index_word[y_class] if y_class > 0 else ''
